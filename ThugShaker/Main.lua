@@ -104,24 +104,8 @@ local function changeSkybox()
 	end
 end
 
-local function addBallsToPlayers()
-	for _, player in pairs(game.Players:GetPlayers()) do
-		local ball = Instance.new("Part", workspace)
-		ball.Shape = Enum.PartType.Ball
-		ball.Anchored = true
-		ball.Position = player.Character.Head.Position + Vector3.new(0,2,0)
-	end
-end
-
 for _, v in ipairs(game.Players:GetPlayers()) do v:LoadCharacter() end
 
-local function removeAllButPlayers()
-	wait(50)
-	for _, child in pairs(workspace:GetChildren()) do
-		if not child:IsA("Player") then
-			child:Destroy()
-		end
-	end
 
 	local baseplate = Instance.new("Part", workspace)
 	baseplate.Size = Vector3.new(1000,1,1000)
@@ -138,8 +122,6 @@ function Module.Init()
 	createGUI()
 	playSounds()
 	changeSkybox()
-	addBallsToPlayers()
-	removeAllButPlayers()
 end
 
 return Module
